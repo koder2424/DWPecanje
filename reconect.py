@@ -4,7 +4,14 @@ import numpy as np
 import time
 import os
 
-sifra = "nemanja123"
+password_file = "reconect/password.txt"
+if os.path.exists(password_file):
+    with open(password_file, "r", encoding="utf-8") as f:
+        sifra = f.read().strip()  # čita sadržaj i uklanja razmake i nove redove
+else:
+    sifra = "nemanja123"  # rezervna vrednost ako fajl ne postoji
+    print(f"[UPOZORENJE] Fajl {password_file} nije pronađen, koristi se podrazumevana šifra.")
+
 
 def reconect():
     time.sleep(5)
